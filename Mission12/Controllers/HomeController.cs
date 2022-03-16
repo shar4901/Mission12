@@ -37,6 +37,21 @@ namespace Mission12.Controllers
             ViewBag.AllTimeSlots = allTimeslots;
             return View();
         }
+
+
+
+        //for when first loading an exisiting appointting 
+        [HttpGet]
+        public IActionResult AddAppointment(int aptID)
+        {
+            return View();
+        }
+        //[HttpPost]
+        //public IActionResult AddAppointment(int aptID)
+        //{
+        //    return View();
+        //}
+
         public IActionResult Privacy()
         {
             return View();
