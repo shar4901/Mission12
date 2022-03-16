@@ -9,8 +9,8 @@ using Mission12.Models;
 namespace Mission12.Migrations
 {
     [DbContext(typeof(AppointmentContext))]
-    [Migration("20220316172532_init2")]
-    partial class init2
+    [Migration("20220316175423_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -41,6 +41,16 @@ namespace Mission12.Migrations
                     b.HasKey("AppointmentId");
 
                     b.ToTable("Appointments");
+
+                    b.HasData(
+                        new
+                        {
+                            AppointmentId = 1,
+                            Email = "test@test.com",
+                            GroupName = "Farquad Squad",
+                            GroupSize = 4,
+                            Phone = "801-123-1234"
+                        });
                 });
 
             modelBuilder.Entity("Mission12.Models.TimeSlot", b =>
@@ -56,6 +66,17 @@ namespace Mission12.Migrations
                     b.HasIndex("AppointmentId");
 
                     b.ToTable("TimeSlots");
+
+                    b.HasData(
+                        new
+                        {
+                            AppointmentDateTime = new DateTime(2022, 4, 5, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            AppointmentId = 1
+                        },
+                        new
+                        {
+                            AppointmentDateTime = new DateTime(2022, 4, 5, 9, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("Mission12.Models.TimeSlot", b =>

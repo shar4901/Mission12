@@ -39,6 +39,16 @@ namespace Mission12.Migrations
                     b.HasKey("AppointmentId");
 
                     b.ToTable("Appointments");
+
+                    b.HasData(
+                        new
+                        {
+                            AppointmentId = 1,
+                            Email = "test@test.com",
+                            GroupName = "Farquad Squad",
+                            GroupSize = 4,
+                            Phone = "801-123-1234"
+                        });
                 });
 
             modelBuilder.Entity("Mission12.Models.TimeSlot", b =>
@@ -54,6 +64,17 @@ namespace Mission12.Migrations
                     b.HasIndex("AppointmentId");
 
                     b.ToTable("TimeSlots");
+
+                    b.HasData(
+                        new
+                        {
+                            AppointmentDateTime = new DateTime(2022, 4, 5, 8, 0, 0, 0, DateTimeKind.Unspecified),
+                            AppointmentId = 1
+                        },
+                        new
+                        {
+                            AppointmentDateTime = new DateTime(2022, 4, 5, 9, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
                 });
 
             modelBuilder.Entity("Mission12.Models.TimeSlot", b =>

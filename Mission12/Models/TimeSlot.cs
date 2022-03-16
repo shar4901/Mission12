@@ -12,6 +12,8 @@ namespace Mission12.Models
         [Required]
         public DateTime AppointmentDateTime { get; set; }
 
+        public int? AppointmentId { get; set; }
+
         public Appointment Appointment { get; set; }
     }
 }

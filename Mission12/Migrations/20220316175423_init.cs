@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Mission12.Migrations
 {
-    public partial class init2 : Migration
+    public partial class init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -40,6 +40,21 @@ namespace Mission12.Migrations
                         principalColumn: "AppointmentId",
                         onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Appointments",
+                columns: new[] { "AppointmentId", "Email", "GroupName", "GroupSize", "Phone" },
+                values: new object[] { 1, "test@test.com", "Farquad Squad", 4, "801-123-1234" });
+
+            migrationBuilder.InsertData(
+                table: "TimeSlots",
+                columns: new[] { "AppointmentDateTime", "AppointmentId" },
+                values: new object[] { new DateTime(2022, 4, 5, 9, 0, 0, 0, DateTimeKind.Unspecified), null });
+
+            migrationBuilder.InsertData(
+                table: "TimeSlots",
+                columns: new[] { "AppointmentDateTime", "AppointmentId" },
+                values: new object[] { new DateTime(2022, 4, 5, 8, 0, 0, 0, DateTimeKind.Unspecified), 1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_TimeSlots_AppointmentId",
