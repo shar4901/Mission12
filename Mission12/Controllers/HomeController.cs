@@ -13,16 +13,30 @@ namespace Mission12.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+
+        //brings in the repostory
+
+        private IAppointmentRepository repo;
+
+      
+        public HomeController(IAppointmentRepository temp)
         {
-            _logger = logger;
+            repo = temp;
         }
 
         public IActionResult Index()
         {
             return View();
         }
+        public IActionResult Signup()
 
+        {
+            //grabs all time slots and saves to alltimeslots
+
+            List<TimeSlot> allTimeslots = repo.Timeslots.ToList();
+            ViewBag.AllTimeSlots = allTimeslots;
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();

@@ -26,7 +26,7 @@ namespace Mission12
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-
+            services.AddScoped<IAppointmentRepository, EFAppointmentRepository>();
             services.AddDbContext<AppointmentContext>(options =>
           {
               options.UseSqlite(Configuration["ConnectionStrings:AppointmentDBConnection"]);
