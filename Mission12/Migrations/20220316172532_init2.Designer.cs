@@ -9,8 +9,8 @@ using Mission12.Models;
 namespace Mission12.Migrations
 {
     [DbContext(typeof(AppointmentContext))]
-    [Migration("20220314173147_init")]
-    partial class init
+    [Migration("20220316172532_init2")]
+    partial class init2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -45,13 +45,13 @@ namespace Mission12.Migrations
 
             modelBuilder.Entity("Mission12.Models.TimeSlot", b =>
                 {
-                    b.Property<DateTime>("AppointmentTime")
+                    b.Property<DateTime>("AppointmentDateTime")
                         .HasColumnType("TEXT");
 
                     b.Property<int?>("AppointmentId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("AppointmentTime");
+                    b.HasKey("AppointmentDateTime");
 
                     b.HasIndex("AppointmentId");
 

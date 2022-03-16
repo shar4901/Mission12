@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Mission12.Migrations
 {
-    public partial class init : Migration
+    public partial class init2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -27,12 +27,12 @@ namespace Mission12.Migrations
                 name: "TimeSlots",
                 columns: table => new
                 {
-                    AppointmentTime = table.Column<DateTime>(nullable: false),
+                    AppointmentDateTime = table.Column<DateTime>(nullable: false),
                     AppointmentId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TimeSlots", x => x.AppointmentTime);
+                    table.PrimaryKey("PK_TimeSlots", x => x.AppointmentDateTime);
                     table.ForeignKey(
                         name: "FK_TimeSlots_Appointments_AppointmentId",
                         column: x => x.AppointmentId,

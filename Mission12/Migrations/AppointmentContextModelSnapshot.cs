@@ -43,13 +43,13 @@ namespace Mission12.Migrations
 
             modelBuilder.Entity("Mission12.Models.TimeSlot", b =>
                 {
-                    b.Property<DateTime>("AppointmentTime")
+                    b.Property<DateTime>("AppointmentDateTime")
                         .HasColumnType("TEXT");
 
                     b.Property<int?>("AppointmentId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("AppointmentTime");
+                    b.HasKey("AppointmentDateTime");
 
                     b.HasIndex("AppointmentId");
 

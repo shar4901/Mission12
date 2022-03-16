@@ -10,7 +10,7 @@ namespace Mission12.Models
     {
         [Key]
         [Required]
-        public DateTime AppointmentTime { get; set; }
+        public DateTime AppointmentDateTime { get; set; }
 
         public Appointment Appointment { get; set; }
     }
