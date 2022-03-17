@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Mission12.Models;
 
 namespace Mission12.Migrations
 {
     [DbContext(typeof(AppointmentContext))]
-    partial class AppointmentContextModelSnapshot : ModelSnapshot
+    [Migration("20220317005832_init2")]
+    partial class init2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -274,58 +276,6 @@ namespace Mission12.Migrations
                         new
                         {
                             AppointmentDateTime = new DateTime(2022, 4, 8, 20, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            AppointmentDateTime = new DateTime(2022, 4, 9, 8, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            AppointmentDateTime = new DateTime(2022, 4, 9, 9, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            AppointmentDateTime = new DateTime(2022, 4, 9, 10, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            AppointmentDateTime = new DateTime(2022, 4, 9, 11, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            AppointmentDateTime = new DateTime(2022, 4, 9, 12, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            AppointmentDateTime = new DateTime(2022, 4, 9, 13, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            AppointmentDateTime = new DateTime(2022, 4, 9, 14, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            AppointmentDateTime = new DateTime(2022, 4, 9, 15, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            AppointmentDateTime = new DateTime(2022, 4, 9, 16, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            AppointmentDateTime = new DateTime(2022, 4, 9, 17, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            AppointmentDateTime = new DateTime(2022, 4, 9, 18, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            AppointmentDateTime = new DateTime(2022, 4, 9, 19, 0, 0, 0, DateTimeKind.Unspecified)
-                        },
-                        new
-                        {
-                            AppointmentDateTime = new DateTime(2022, 4, 9, 20, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
