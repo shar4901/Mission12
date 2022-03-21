@@ -8,6 +8,9 @@
 
         <tr class="text-center">
             <th>
+                Date
+            </th>
+            <th>
                 Time
             </th>
 
@@ -31,34 +34,37 @@
             </th>
         </tr>
 
-        @foreach (Appointment appt in ViewBag.AllAppointments)
+        @foreach (TimeSlot appt in ViewBag.AllAppointments)
         {
-            <tr class="text-center">
+    <tr class="text-center">
 
+        <td>
+            @appt.AppointmentDateTime.ToString("d")
+        </td>
 
-                <td>
-                    @appt.AppointmentId
-                </td>
-                <td>
-                    @appt.GroupName
-                </td>
-                <td>
-                    @appt.GroupSize
-                </td>
-                <td>
-                    @appt.Email
-                </td>
-                <td>
-                    @appt.Phone
-                </td>
+        <td>
+            @appt.AppointmentDateTime.ToString("t")
+        </td>
+        <td>
+            @appt.Appointment.GroupName
+        </td>
+        <td>
+            @appt.Appointment.GroupSize
+        </td>
+        <td>
+            @appt.Appointment.Email
+        </td>
+        <td>
+            @appt.Appointment.Phone
+        </td>
 
-                <td>
-                    <a asp-controller="Home" asp-action="AddAppointment" class="btn btn-sm btn-warning">Edit</a>
-                </td>
-                <td>
-                    <a asp-controller="Home" asp-action="AddAppointment" class="btn btn-sm btn-danger">Delete</a>
-                </td>
-            </tr>
+        <td>
+            <a asp-controller="Home" asp-action="AddAppointment" class="btn btn-sm btn-warning">Edit</a>
+        </td>
+        <td>
+            <a asp-controller="Home" asp-action="AddAppointment" class="btn btn-sm btn-danger">Delete</a>
+        </td>
+    </tr>
         }
 
     </table>

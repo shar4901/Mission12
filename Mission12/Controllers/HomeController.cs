@@ -57,7 +57,10 @@ namespace Mission12.Controllers
         public IActionResult ViewAllAppointments()
         {
 
-            List<Appointment> AllAppointments = repo.Appointments.ToList();
+            List<TimeSlot> AllAppointments  = repo.Timeslots
+                .Where(x => x.AppointmentId != null)
+                .OrderBy(x => x.AppointmentDateTime)
+                .ToList();
             ViewBag.AllAppointments = AllAppointments;
             return View();
         }
