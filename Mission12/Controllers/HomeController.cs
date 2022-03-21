@@ -70,13 +70,19 @@ namespace Mission12.Controllers
 
         //for when first loading an exisiting appointting 
         [HttpGet]
-        public IActionResult AddAppointment(int aptID)
+        public IActionResult AddAppointment()
         {
-            return View();
+            return View(new Appointment());
         }
-        //[HttpPost]
-        //public IActionResult AddAppointment(int aptID)
+
+        //for when the appointment information is submitted
+        [HttpPost]
+        //public IActionResult AddAppointment(Appointment appointment)
         //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        appointment
+        //    }
         //    return View();
         //}
 
