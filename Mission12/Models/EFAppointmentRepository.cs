@@ -17,9 +17,7 @@ namespace Mission12.Models
 
         public IQueryable<TimeSlot> Timeslots => context.TimeSlots.Include(x => x.Appointment);
 
-        public IQueryable<Appointment> Appointments => context.Appointments;
-
-
+        public IQueryable<Appointment> Appointments => context.Appointments.Include(x => x.AppointmentId);
 
     }
 }
