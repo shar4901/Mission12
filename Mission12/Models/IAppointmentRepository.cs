@@ -11,8 +11,10 @@ namespace Mission12.Models
 
         IQueryable<TimeSlot> Timeslots { get; }
 
-        //public void SaveAppointment(Appointment appointment);
+        public void SaveAppointment(Appointment appointment, string timeId);
 
+        public void DeleteAppointment(int AppId);
 
+        public void EditAppointment(int AppId);
     }
 }

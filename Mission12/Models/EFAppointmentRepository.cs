@@ -19,5 +19,41 @@ namespace Mission12.Models
 
         public IQueryable<Appointment> Appointments => context.Appointments.Include(x => x.AppointmentId);
 
+        public void SaveAppointment(Appointment appointment, string timeId )
+        {
+            // cast to datetime
+            DateTime timedate = DateTime.Parse(timeId);
+
+            if (appointment.AppointmentId == 0)
+            {
+                context.Appointments.Add(appointment);
+                context.SaveChanges();
+
+                //grab timeslot to update
+                TimeSlot timeslot = context.TimeSlots.Where(x => x.AppointmentDateTime == timedate).FirstOrDefault();
+
+
+                timeslot.AppointmentId = appointment.AppointmentId;
+            }
+
+            context.SaveChanges();
+        }
+
+        public void DeleteAppointment(int AppId)
+        {// delete appointment object, removee apptid from the timeslot so that it can get added back to the list of avaiilable appts
+            Appointment app = context.Appointments.Where(x => x.AppointmentId == AppId).FirstOrDefault();
+            TimeSlot timeslot = context.TimeSlots.Where(x => x.AppointmentId == AppId).FirstOrDefault();
+            timeslot.AppointmentId = null;
+            context.Remove(app);
+            context.SaveChanges();
+        }
+
+        public void EditAppointment(int AppId)
+        {
+            //Appointment app = context.Appointments.Single(x => x.AppointmentId == AppId);
+            //TimeSlot timeslot = context.TimeSlots.Single(x => x.AppointmentId == AppId);
+
+            Models.Appointment appointment = context.Appointments.Single(x => x.AppointmentId == AppId);
+        }
     }
 }

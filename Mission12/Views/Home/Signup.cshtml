@@ -31,7 +31,7 @@
                     @slot.AppointmentDateTime
                 </td>
                 <td>
-                    <a asp-controller="Home" asp-action="AddAppointment" class="btn btn-sm btn-primary">Sign Up</a>
+                    <a asp-controller="Home" asp-action="AddAppointment" asp-route-timeId="@slot.AppointmentDateTime.ToString()" class="btn btn-sm btn-primary">Sign Up</a>
                 </td>
             </tr>
         }

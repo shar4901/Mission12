@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Mission12.Models;
 using System;
@@ -70,21 +72,46 @@ namespace Mission12.Controllers
 
         //for when first loading an exisiting appointting 
         [HttpGet]
-        public IActionResult AddAppointment()
+        public IActionResult AddAppointment(string timeId)
         {
+            ViewBag.TimeId = timeId;
             return View(new Appointment());
         }
 
         //for when the appointment information is submitted
         [HttpPost]
-        //public IActionResult AddAppointment(Appointment appointment)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        appointment
-        //    }
-        //    return View();
-        //}
+        public IActionResult AddAppointment(Appointment appointment, string TimeId)
+        {
+
+            //string timeId = form["TimeId"].ToString();
+            //string timeId = Request["TimeId"].ToString();
+            if (ModelState.IsValid)
+            {
+                repo.SaveAppointment(appointment, TimeId );
+                
+
+                return RedirectToAction("Index");
+            }
+            return View();
+        }
+
+        //for when an appointment is edited
+        [HttpGet]
+        public IActionResult EditAppointment(int AppId)
+        {
+            Models.Appointment appointment = repo.Appointments.Where(x => x.AppointmentId == AppId).FirstOrDefault(); //Appointments.Single(x => x.AppointmentId == AppId);
+
+            return View(appointment);
+        }
+
+        [HttpGet]
+        public IActionResult DeleteAppointment(int AppId)
+        {
+            repo.DeleteAppointment(AppId);
+
+
+            return RedirectToAction("ViewAllAppointments");
+        }
 
         public IActionResult Privacy()
         {

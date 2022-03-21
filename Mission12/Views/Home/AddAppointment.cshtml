@@ -11,7 +11,7 @@
 
     <div class="form-group">
         <label asp-for="GroupName">Group Name:</label>
-        <input asp-for="GroupName" class="form-control"/>
+        <input asp-for="GroupName" class="form-control" />
     </div>
 
     <div class="form-group">
@@ -28,9 +28,13 @@
         <label asp-for="Phone"></label>
         <input asp-for="Phone" class="form-control" />
     </div>
-    
+
     <div class="float-end">
         <input class="btn btn-primary" type="submit" value="Confirm Tour" />
     </div>
 
+    <input type="hidden" name="TimeId" value="@ViewBag.TimeId" />
+
 </form>
+
+
