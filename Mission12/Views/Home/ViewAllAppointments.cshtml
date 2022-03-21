@@ -1,0 +1,65 @@
+﻿
+
+<div class="d-flex flex-column justify-content-center">
+
+
+    <h1 class="text-center m-2" >Current Appointments</h1>
+    <table class="table table-bordered table-hover table-striped">
+
+        <tr class="text-center">
+            <th>
+                Time
+            </th>
+
+            <th>
+                Name
+            </th>
+            <th>
+                Size
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Phone
+            </th>
+            <th>
+                Edit
+            </th>
+            <th>
+                Delete
+            </th>
+        </tr>
+
+        @foreach (Appointment appt in ViewBag.AllAppointments)
+        {
+            <tr class="text-center">
+
+
+                <td>
+                    @appt.AppointmentId
+                </td>
+                <td>
+                    @appt.GroupName
+                </td>
+                <td>
+                    @appt.GroupSize
+                </td>
+                <td>
+                    @appt.Email
+                </td>
+                <td>
+                    @appt.Phone
+                </td>
+
+                <td>
+                    <a asp-controller="Home" asp-action="AddAppointment" class="btn btn-sm btn-warning">Edit</a>
+                </td>
+                <td>
+                    <a asp-controller="Home" asp-action="AddAppointment" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

@@ -11,14 +11,12 @@ namespace Mission12.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
 
         //brings in the repostory
 
         private IAppointmentRepository repo;
 
-      
+
         public HomeController(IAppointmentRepository temp)
         {
             repo = temp;
@@ -54,6 +52,17 @@ namespace Mission12.Controllers
             ViewBag.ScheduledTimeSlots = scheduledTimeSlots;
             return View();
         }
+
+        //Grabs all appointments from repository
+        public IActionResult ViewAllAppointments()
+        {
+
+            List<Appointment> AllAppointments = repo.Appointments.ToList();
+            ViewBag.AllAppointments = AllAppointments;
+            return View();
+        }
+
+
 
 
         //for when first loading an exisiting appointting 
