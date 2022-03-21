@@ -31,13 +31,29 @@ namespace Mission12.Controllers
         public IActionResult Signup()
 
         {
-            //grabs all time slots and saves to alltimeslots
+            //grabs all available time slots and saves to alltimeslots
 
-            List<TimeSlot> allTimeslots = repo.Timeslots.ToList();
+            List<TimeSlot> allTimeslots = repo.Timeslots
+                .Where(x => x.AppointmentId == null)
+                .OrderBy(x => x.AppointmentDateTime)
+                .ToList();
+
             ViewBag.AllTimeSlots = allTimeslots;
             return View();
         }
 
+        public IActionResult Appointments()
+
+        {
+            List<TimeSlot> scheduledTimeSlots = repo.Timeslots
+                .Where(x => x.AppointmentId != null)
+                .OrderBy(x => x.AppointmentDateTime)
+                .ToList();
+
+
+            ViewBag.ScheduledTimeSlots = scheduledTimeSlots;
+            return View();
+        }
 
 
         //for when first loading an exisiting appointting 

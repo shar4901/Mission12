@@ -1,0 +1,45 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div class="container">
+
+    <table class="table table-bordered table-hover table-striped">
+
+
+        <tr>
+
+            <td>
+                Time
+            </td>
+
+            <td>
+                Group
+            </td>
+        </tr>
+
+
+
+        @foreach (TimeSlot slot in ViewBag.ScheduledTimeSlots)
+        {
+            <tr class="text-center">
+
+                <td>
+                    @(slot.AppointmentDateTime)
+                </td>
+                <td>
+                    @(slot.Appointment.GroupName)
+                </td>
+                <td>
+                    <a asp-controller="Home" asp-action="EditAppointment" class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-controller="Home" asp-action="EditAppointment" class="btn btn-sm  btn-danger">Delete</a>
+
+                </td>
+            </tr>
+        }
+
+
+    </table>
+</div>
