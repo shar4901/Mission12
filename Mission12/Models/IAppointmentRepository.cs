@@ -15,6 +15,6 @@ namespace Mission12.Models
 
         public void DeleteAppointment(int AppId);
 
-        public void EditAppointment(int AppId);
+        public void EditAppointment(Appointment appointment);
     }
 }

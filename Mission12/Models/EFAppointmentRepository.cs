@@ -47,12 +47,14 @@ namespace Mission12.Models
             context.SaveChanges();
         }
 
-        public void EditAppointment(int AppId)
+        public void EditAppointment(Appointment appointment)
         {
             //Appointment app = context.Appointments.Single(x => x.AppointmentId == AppId);
             //TimeSlot timeslot = context.TimeSlots.Single(x => x.AppointmentId == AppId);
 
-            Models.Appointment appointment = context.Appointments.Single(x => x.AppointmentId == AppId);
+            //Models.Appointment appointment = context.Appointments.Single(x => x.AppointmentId == AppId);
+
+            context.Update(appointment);
         }
     }
 }

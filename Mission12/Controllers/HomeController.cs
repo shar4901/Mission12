@@ -75,6 +75,7 @@ namespace Mission12.Controllers
             //string timeId = Request["TimeId"].ToString();
             if (ModelState.IsValid)
             {
+                repo.EditAppointment(appointment);
                 repo.SaveAppointment(appointment, timeId );
 
                 ViewBag.TimeId = timeId;
@@ -86,11 +87,15 @@ namespace Mission12.Controllers
 
         //for when an appointment is edited
         [HttpGet]
-        public IActionResult EditAppointment(int AppId)
+        public IActionResult EditAppointment(DateTime timeId)
         {
-            Models.Appointment appointment = repo.Appointments.Where(x => x.AppointmentId == AppId).FirstOrDefault(); //Appointments.Single(x => x.AppointmentId == AppId);
+            TimeSlot time = repo.Timeslots.Where(x => x.AppointmentDateTime == timeId).FirstOrDefault(); //Appointments.Single(x => x.AppointmentId == AppId);
 
-            return View(appointment);
+            Appointment appointment = time.Appointment;
+
+            ViewBag.TimeId = timeId;
+
+            return View("AddAppointment", appointment);
         }
 
         [HttpGet]
