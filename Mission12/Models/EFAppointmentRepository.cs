@@ -19,10 +19,9 @@ namespace Mission12.Models
 
         public IQueryable<Appointment> Appointments => context.Appointments.Include(x => x.AppointmentId);
 
-        public void SaveAppointment(Appointment appointment, string timeId )
+        public void SaveAppointment(Appointment appointment, DateTime timeId )
         {
             // cast to datetime
-            DateTime timedate = DateTime.Parse(timeId);
 
             if (appointment.AppointmentId == 0)
             {
@@ -30,7 +29,7 @@ namespace Mission12.Models
                 context.SaveChanges();
 
                 //grab timeslot to update
-                TimeSlot timeslot = context.TimeSlots.Where(x => x.AppointmentDateTime == timedate).FirstOrDefault();
+                TimeSlot timeslot = context.TimeSlots.Where(x => x.AppointmentDateTime == timeId).FirstOrDefault();
 
 
                 timeslot.AppointmentId = appointment.AppointmentId;

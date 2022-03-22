@@ -42,18 +42,6 @@ namespace Mission12.Controllers
             return View();
         }
 
-        public IActionResult Appointments()
-
-        {
-            List<TimeSlot> scheduledTimeSlots = repo.Timeslots
-                .Where(x => x.AppointmentId != null)
-                .OrderBy(x => x.AppointmentDateTime)
-                .ToList();
-
-
-            ViewBag.ScheduledTimeSlots = scheduledTimeSlots;
-            return View();
-        }
 
         //Grabs all appointments from repository
         public IActionResult ViewAllAppointments()
@@ -72,7 +60,7 @@ namespace Mission12.Controllers
 
         //for when first loading an exisiting appointting 
         [HttpGet]
-        public IActionResult AddAppointment(string timeId)
+        public IActionResult AddAppointment(DateTime timeId)
         {
             ViewBag.TimeId = timeId;
             return View(new Appointment());
@@ -80,15 +68,16 @@ namespace Mission12.Controllers
 
         //for when the appointment information is submitted
         [HttpPost]
-        public IActionResult AddAppointment(Appointment appointment, string TimeId)
+        public IActionResult AddAppointment(Appointment appointment, DateTime timeId)
         {
 
             //string timeId = form["TimeId"].ToString();
             //string timeId = Request["TimeId"].ToString();
             if (ModelState.IsValid)
             {
-                repo.SaveAppointment(appointment, TimeId );
-                
+                repo.SaveAppointment(appointment, timeId );
+
+                ViewBag.TimeId = timeId;
 
                 return RedirectToAction("Index");
             }
