@@ -3,40 +3,55 @@
 *@
 @{
 }
-<div class="d-flex flex-column justify-content-center">
+<div class="d-flex flex-column justify-content-center border-info">
 
 
     <h1 class="text-center m-2">Sign up for Timeslot</h1>
-    <table class="table table-bordered table-hover table-striped">
 
-
-        <tr>
-
-            <td>
-                Time
-            </td>
-
-            <td>
-                Signup
-            </td>
-        </tr>
-
-
+    <div class="row">
 
         @foreach (TimeSlot slot in ViewBag.AllTimeSlots)
         {
+            <div class="col-4">
+                <div class="bg-light p-2 m-2 text-center rounded" style="height:120px; border-radius:1rem; border-color:gray; border-style:solid">
+                    <h3>
+                        @slot.AppointmentDateTime.ToString("dddd, MMMMM d")
+                    </h3>
+                    <a asp-controller="Home" asp-action="AddAppointment" asp-route-timeId="@slot.AppointmentDateTime.ToString()" class="btn btn-sm btn-primary mt-1 "><h3> @slot.AppointmentDateTime.ToString("t")</h3></a>
+                </div>
+
+            </div>
+
+        }
+    </div>
+    @*<table class="table table-bordered table-hover table-striped">
+
             <tr class="text-center">
 
                 <td>
-                    @slot.AppointmentDateTime
+                    Time
                 </td>
+
                 <td>
-                    <a asp-controller="Home" asp-action="AddAppointment" asp-route-timeId="@slot.AppointmentDateTime.ToString()" class="btn btn-sm btn-primary">Sign Up</a>
+                    Signup
                 </td>
             </tr>
-        }
+
+            @foreach (TimeSlot slot in ViewBag.AllTimeSlots)
+            {
+                <tr class="text-center">
+
+                    <td>
+                        @slot.AppointmentDateTime
+                    </td>
+                    <td>
+                        <a asp-controller="Home" asp-action="AddAppointment" asp-route-timeId="@slot.AppointmentDateTime.ToString()" class="btn btn-sm btn-primary">Sign Up</a>
+                    </td>
+                </tr>
+            }
+
+        </table>*@
 
 
-    </table>
 
 </div>
