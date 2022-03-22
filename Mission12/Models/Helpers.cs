@@ -12,6 +12,8 @@ namespace Mission12.Models
         {
             var appConfig = ConfigurationManager.AppSettings;
 
+            // enter our information from the elastic beanstalk here.
+
             string dbname = appConfig["RDS_DB_NAME"];
 
             if (string.IsNullOrEmpty(dbname)) return null;
