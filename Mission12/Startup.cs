@@ -29,7 +29,7 @@ namespace Mission12
             services.AddScoped<IAppointmentRepository, EFAppointmentRepository>();
             services.AddDbContext<AppointmentContext>(options =>
           {
-              options.UseSqlite(Configuration["ConnectionStrings:AppointmentDBConnection"]);
+              options.UseMySql(Configuration["ConnectionStrings:AppointmentDBConnection"]);
           });
         }
 
