@@ -82,6 +82,7 @@ namespace Mission12.Controllers
 
                 return RedirectToAction("Index");
             }
+            ViewBag.TimeId = timeId;
             return View();
         }
 
